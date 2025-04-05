@@ -61,7 +61,8 @@ class InstanceMethWithObjectRefDemo {
     // A method that returns the number of occurrences
     // of an object for which some criteria, as specified by
     // the MyFunc parameter, is true.
-    static <T> int counter(T[] vals, MyFunc<T> f, T v) {int count = 0;
+    static <T> int counter(T[] vals, MyFunc<T> f, T v) {
+        int count = 0;
         for(int i=0; i < vals.length; i++)
             if(f.func(vals[i], v)) count++;
         return count;
