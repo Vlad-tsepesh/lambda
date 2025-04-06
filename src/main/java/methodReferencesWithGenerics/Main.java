@@ -47,6 +47,10 @@ class MyClass {
     private int val;
     MyClass(int v) { val = v; }
     int getVal() { return val; }
+    @Override
+    public String toString() {
+        return "" + val;
+    }
 }
 class UseMethodRef {
     // A compare() method compatible with the one defined by Comparator<T>.
@@ -65,5 +69,17 @@ class UseMethodRef {
         // Find the maximum value in al using the compareMC() method.
         MyClass maxValObj = Collections.max(al, UseMethodRef::compareMC);
         System.out.println("Maximum value is: " + maxValObj.getVal());
+
+        //the same using streamAPI
+        al.stream()
+                .max(Comparator.comparingInt(MyClass::getVal)).ifPresent(n -> System.out.println("Maximum value is: " + n));
+
+        //using streamAPI to get the second max value
+        al.stream()
+                .sorted(Comparator.comparing(MyClass::getVal).reversed())
+                .skip(1)
+                .findFirst()
+                .ifPresent(n -> System.out.println("Second maximum value is: " + n));
+
     }
 }
