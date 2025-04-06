@@ -1,7 +1,7 @@
 package traning;
 
-interface MyFunc<R, T> {
-    R func(T n);
+interface MyFunc {
+    MyClass func(String n);
 
 }
 class MyClass {
@@ -14,13 +14,18 @@ class MyClass {
 }
 
 class ConstructorReference {
-    static <R, T> R myClassFactory (MyFunc<R, T> cons, T v) {
-        return cons.func(v);
-    }
+//    static MyClass myClassFactory (MyFunc cons, String v) {
+//        return cons.func(v);
+//    }
 
-    MyFunc<MyClass, String> myClassCons = MyClass :: new;
+//    MyFunc myClassCons = MyClass::new;
 
-    MyClass myClass = myClassFactory(myClassCons, "Hello");
+//    MyClass myClass = myClassFactory(myClassCons, "Hello");
+    MyFunc myFunc = MyClass::new;
+    MyClass myClass = myFunc.func("Hello");
+
+
+    MyClass myClass2 = new MyClass("Hello");
 }
 
 
