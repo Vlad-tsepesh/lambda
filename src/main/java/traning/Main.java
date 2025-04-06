@@ -2,8 +2,10 @@ package traning;
 
 interface MyFunc<R, T> {
     R func(T v);
-
 }
+
+
+
 class MyClass<T> {
     T val;
 
@@ -25,6 +27,7 @@ class ConstructorReference {
 
 
     MyClass<String> myClass3 = new MyClass<>("Hello");
+
 }
 
 
