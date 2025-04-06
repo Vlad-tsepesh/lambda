@@ -1,31 +1,30 @@
 package traning;
 
-interface MyFunc {
-    MyClass func(String n);
+interface MyFunc<R, T> {
+    R func(T v);
 
 }
-class MyClass {
-    String str;
+class MyClass<T> {
+    T val;
 
-    MyClass(String s) {str = s;}
+    MyClass(T v) {val = v;}
 
-    String getStr() {return str;}
+    T getStr() {return val;}
 
 }
 
 class ConstructorReference {
-//    static MyClass myClassFactory (MyFunc cons, String v) {
-//        return cons.func(v);
-//    }
+    static <R, T> R myClassFactory (MyFunc<R, T> cons, T v) {
+        return cons.func(v);
+    }
 
-//    MyFunc myClassCons = MyClass::new;
+    MyClass<String> myClass = myClassFactory(MyClass::new, "Hello");
 
-//    MyClass myClass = myClassFactory(myClassCons, "Hello");
-    MyFunc myFunc = MyClass::new;
-    MyClass myClass = myFunc.func("Hello");
+    MyFunc<MyClass<String>, String> myFunc = MyClass::new;
+    MyClass<String> myClass2 = myFunc.func("Hello");
 
 
-    MyClass myClass2 = new MyClass("Hello");
+    MyClass<String> myClass3 = new MyClass<>("Hello");
 }
 
 
