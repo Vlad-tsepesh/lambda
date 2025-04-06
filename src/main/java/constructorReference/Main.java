@@ -35,3 +35,4 @@ class ConstructorRefDemo {
         System.out.println("val in mc is " + mc.getVal( ));
     }
 }
+
